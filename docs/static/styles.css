@@ -112,7 +112,7 @@ header .info {
 
 header .neck {
     margin: 0 auto; 
-    background: url(./logo.png) no-repeat center center; 
+    /* background: url(./logo.png) no-repeat center center;  */
     width:32px; height:32px;
     background-size: cover;
     opacity:0.45;
