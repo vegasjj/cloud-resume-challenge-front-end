@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'Raleway';
     src: local('Raleway'), url('./font/raleway-regular-webfont.eot');
@@ -252,32 +253,12 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
-}
-
-.visit-counter-icon img {
-    width: 24px;
-    height: 24px;
-}
-
-.visit-counter-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.visit-counter-number {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
-}
-
-.visit-counter-label {
-    font-size: 0.9rem;
-    color: #666;
+    color: #4CAF50; /* Modern green color */
+    background: #f9f9f9;
+    border: 2px solid #4CAF50;
+    border-radius: 8px;
+    padding: 10px 20px;
 }
