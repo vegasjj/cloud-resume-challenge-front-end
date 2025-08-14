@@ -48,4 +48,4 @@ jobs:
             --overwrite
 
       - name: Purge CDN endpoint
-        run: az cdn endpoint purge -g rg-crc-prod-001 -n crc-end-prod --profile-name crc-cdn-prod --content-paths "/*"
+        run: az cdn endpoint purge -g rg-crc-prod-001 -n ep-crc-prod-001 --profile-name cdn-crc-prod-001 --content-paths "/*"

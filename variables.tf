@@ -17,13 +17,13 @@ variable "storage_account_name" {
 
 variable "cdn_profile_name" {
   description = "Name of the CDN Profile"
-  default = "crc-cdn-prod"
+  default = "cdn-crc-prod-001"
   type        = string
 }
 
 variable "cdn_endpoint_name" {
   description = "Name of the CDN Endpoint"
-  default = "crc-end-prod"
+  default = "ep-crc-prod-001"
   type        = string
 }
 
