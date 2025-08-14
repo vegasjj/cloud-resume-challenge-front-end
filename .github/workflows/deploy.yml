@@ -1,0 +1,54 @@
+name: Deploy Ordered Static Site to Azure with Terraform on HCP
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  TF_CLOUD_ORGANIZATION: azure-terraform-labs
+  TF_WORKSPACE: azure-cloud-resume-challenge-prod
+  TF_TOKEN_app_terraform_io: ${{ secrets.TF_API_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Azure Login using Service Principal
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Setup Terraform CLI
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 'v1.12.2'
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Init
+        working-directory: ./terraform
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: ./terraform
+        run: terraform plan
+
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: terraform apply -auto-approve
+
+      - name: Upload static site files to Azure Storage
+        run: |
+          az storage blob upload-batch \
+            --account-name stcrc002 \
+            --destination '$web' \
+            --source ./site \
+            --auth-mode login \
+            --overwrite
+
+      - name: Purge CDN endpoint
+        run: az cdn endpoint purge -g rg-crc-prod-001 -n crc-end-prod --profile-name crc-cdn-prod --content-paths "/*"
