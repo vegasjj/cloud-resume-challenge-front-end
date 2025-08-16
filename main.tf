@@ -32,7 +32,6 @@ resource "azurerm_storage_account" "staticweb" {
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-#   allow_blob_public_access = false
 
   static_website {
     index_document = "index.html"
