@@ -1,4 +1,4 @@
-name: Deploy Ordered Static Site to Azure with Terraform on HCP
+name: Deploy Static Site Using Azure Storage, Azure CDN and Terraform
 
 on:
   push:
