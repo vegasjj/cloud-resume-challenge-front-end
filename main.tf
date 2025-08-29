@@ -8,13 +8,7 @@ terraform {
     }
   }
 
-    cloud {
-    organization = "azure-terraform-labs"
-
-    workspaces {
-      name = "azure-cloud-resume-challenge-prod"
-    }
-  }
+    cloud {}
 }
 
 provider "azurerm" {
