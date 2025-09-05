@@ -51,7 +51,7 @@ resource "azurerm_cdn_endpoint" "cdn_endpoint" {
   host_name = trim(replace(azurerm_storage_account.staticweb.primary_web_endpoint, "https://", ""), "/")
 }
     
-  is_http_allowed  = false
+  is_http_allowed  = true
   is_https_allowed = true
   is_compression_enabled = true
   origin_host_header = trim(replace(azurerm_storage_account.staticweb.primary_web_endpoint, "https://", ""), "/")
